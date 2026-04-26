@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <title>404 — Không tìm thấy trang | DealSach</title>
+    <title>500 — Lỗi máy chủ | DealSach</title>
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -57,7 +57,7 @@
         .error-code {
             font-size: 8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--ds-gradient-start), var(--ds-gradient-end));
+            background: linear-gradient(135deg, #dc3545, var(--ds-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -66,13 +66,13 @@
 
         .error-icon {
             font-size: 4rem;
-            color: var(--ds-accent);
-            animation: float 3s ease-in-out infinite;
+            color: #dc3545;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .7; transform: scale(1.05); }
         }
 
         .ds-footer {
@@ -99,17 +99,17 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 text-center py-5">
                 <div class="error-icon mb-3">
-                    <i class="bi bi-search"></i>
+                    <i class="bi bi-exclamation-triangle"></i>
                 </div>
-                <h1 class="error-code mb-2">404</h1>
-                <h2 class="fw-semibold mb-3">Không tìm thấy trang</h2>
+                <h1 class="error-code mb-2">500</h1>
+                <h2 class="fw-semibold mb-3">Lỗi máy chủ nội bộ</h2>
                 <p class="text-muted mb-4">
-                    Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.<br>
-                    Vui lòng kiểm tra lại đường dẫn hoặc quay về trang chủ.
+                    Hệ thống đang gặp sự cố. Vui lòng thử lại sau.<br>
+                    Nếu lỗi vẫn tiếp tục xảy ra, xin hãy liên hệ quản trị viên.
                 </p>
 
                 <?php if (ENVIRONMENT !== 'production' && ! empty($message)) : ?>
-                    <div class="alert alert-warning text-start small mb-4" role="alert">
+                    <div class="alert alert-danger text-start small mb-4" role="alert">
                         <strong><i class="bi bi-bug me-1"></i>Chi tiết lỗi (development):</strong><br>
                         <?= nl2br(esc($message)) ?>
                     </div>
@@ -119,9 +119,9 @@
                     <a href="/" class="btn btn-primary px-4">
                         <i class="bi bi-house-door me-1"></i>Trang chủ
                     </a>
-                    <a href="/sach" class="btn btn-outline-primary px-4">
-                        <i class="bi bi-search me-1"></i>Danh mục sách
-                    </a>
+                    <button type="button" onclick="location.reload()" class="btn btn-outline-secondary px-4">
+                        <i class="bi bi-arrow-clockwise me-1"></i>Thử lại
+                    </button>
                 </div>
             </div>
         </div>
