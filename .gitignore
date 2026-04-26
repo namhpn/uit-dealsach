@@ -123,6 +123,11 @@ _modules/*
 
 # Visual Studio Code
 .vscode/
+uit-dealsach.code-workspace
+
+# AI Skills
+SKILL.MD
+references/
 
 /api/
 
