@@ -1,0 +1,236 @@
+Table admin_users {
+  id INT [pk, increment]
+  username VARCHAR [unique]
+  password_hash VARCHAR
+  display_name VARCHAR
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table admin_auth_logs {
+  id INT [pk, increment]
+  admin_id INT [null]
+  ip_address VARCHAR
+  user_agent TEXT [null]
+  status VARCHAR
+  created_at DATETIME [null]
+}
+
+Table publishers {
+  id INT [pk, increment]
+  name VARCHAR
+  slug VARCHAR [unique]
+  website_url VARCHAR [null]
+  logo_url VARCHAR [null]
+  country VARCHAR [null]
+  is_active BOOLEAN [default: true]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table categories {
+  id INT [pk, increment]
+  name VARCHAR
+  slug VARCHAR [unique]
+  description TEXT [null]
+  parent_id INT [null]
+  sort_order INT [default: 0]
+  is_active BOOLEAN [default: true]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table books {
+  id INT [pk, increment]
+  title VARCHAR
+  slug VARCHAR [unique]
+  isbn VARCHAR [null]
+  format VARCHAR [null]
+  language VARCHAR [default: 'Tiếng Việt']
+  description TEXT [null]
+  publisher_id INT [null]
+  cover_image_url VARCHAR [null]
+  is_active BOOLEAN [default: true]
+  deleted_at DATETIME [null]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+
+  indexes {
+    (title, isbn) [name: 'idx_books_title_isbn']
+  }
+}
+
+Table book_categories {
+  book_id INT
+  category_id INT
+  is_primary BOOLEAN [default: false]
+
+  indexes {
+    (book_id, category_id) [pk]
+  }
+}
+
+Table authors {
+  id INT [pk, increment]
+  name VARCHAR
+  slug VARCHAR [unique]
+  biography TEXT [null]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table book_authors {
+  book_id INT
+  author_id INT
+
+  indexes {
+    (book_id, author_id) [pk]
+  }
+}
+
+Table retailers {
+  id INT [pk, increment]
+  name VARCHAR
+  slug VARCHAR [unique]
+  website_url VARCHAR
+  logo_url VARCHAR [null]
+  is_active BOOLEAN [default: true]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table retailer_items {
+  id INT [pk, increment]
+  book_id INT
+  retailer_id INT
+  url TEXT
+  original_id VARCHAR [null]
+  current_listed_price INT [null]
+  current_discounted_price INT [null]
+  current_effective_price INT [null]
+  in_stock BOOLEAN [default: true]
+  is_active BOOLEAN [default: true]
+  last_crawled_at DATETIME [null]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+
+  indexes {
+    (book_id, retailer_id) [name: 'idx_retailer_items_book_retailer']
+  }
+}
+
+Table crawl_jobs {
+  id INT [pk, increment]
+  status VARCHAR
+  started_at DATETIME [null]
+  completed_at DATETIME [null]
+  total_items_processed INT [default: 0]
+  created_at DATETIME [null]
+}
+
+Table price_snapshots {
+  id INT [pk, increment]
+  retailer_item_id INT
+  crawl_job_id INT [null]
+  listed_price INT [null]
+  discounted_price INT [null]
+  effective_price INT [null]
+  in_stock BOOLEAN [default: true]
+  captured_at DATETIME [null]
+}
+
+Table retailer_item_changes {
+  id INT [pk, increment]
+  retailer_item_id INT
+  crawl_job_id INT [null]
+  field_name VARCHAR
+  old_value TEXT [null]
+  new_value TEXT [null]
+  detected_at DATETIME [null]
+}
+
+Table crawl_job_errors {
+  id INT [pk, increment]
+  crawl_job_id INT
+  source_row_index INT [null]
+  error_type VARCHAR
+  error_message TEXT
+  raw_data TEXT [null]
+  created_at DATETIME [null]
+}
+
+Table tracking_rules {
+  id INT [pk, increment]
+  book_id INT
+  email VARCHAR
+  target_price INT
+  is_active BOOLEAN [default: true]
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+
+  indexes {
+    (book_id, email) [name: 'idx_tracking_rules_book_email']
+  }
+}
+
+Table otp_requests {
+  id INT [pk, increment]
+  email VARCHAR
+  otp_hash VARCHAR
+  status VARCHAR [default: 'pending']
+  attempt_count INT [default: 0]
+  resend_count INT [default: 0]
+  expires_at DATETIME
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table alert_events {
+  id INT [pk, increment]
+  tracking_rule_id INT
+  previous_price INT [null]
+  new_price INT [null]
+  status VARCHAR [default: 'queued']
+  created_at DATETIME [null]
+  updated_at DATETIME [null]
+}
+
+Table email_logs {
+  id INT [pk, increment]
+  recipient_email VARCHAR
+  email_type VARCHAR
+  subject VARCHAR
+  body_preview TEXT [null]
+  status VARCHAR
+  provider_message_id VARCHAR [null]
+  error_message TEXT [null]
+  sent_at DATETIME [null]
+  created_at DATETIME [null]
+}
+
+Table outbound_clicks {
+  id INT [pk, increment]
+  retailer_item_id INT
+  ip_address VARCHAR
+  user_agent TEXT [null]
+  clicked_at DATETIME [null]
+}
+
+// Foreign Key Relationships
+Ref: admin_auth_logs.admin_id > admin_users.id
+Ref: categories.parent_id > categories.id
+Ref: books.publisher_id > publishers.id
+Ref: book_categories.book_id > books.id
+Ref: book_categories.category_id > categories.id
+Ref: book_authors.book_id > books.id
+Ref: book_authors.author_id > authors.id
+Ref: retailer_items.book_id > books.id
+Ref: retailer_items.retailer_id > retailers.id
+Ref: price_snapshots.retailer_item_id > retailer_items.id
+Ref: price_snapshots.crawl_job_id > crawl_jobs.id
+Ref: retailer_item_changes.retailer_item_id > retailer_items.id
+Ref: retailer_item_changes.crawl_job_id > crawl_jobs.id
+Ref: crawl_job_errors.crawl_job_id > crawl_jobs.id
+Ref: tracking_rules.book_id > books.id
+Ref: alert_events.tracking_rule_id > tracking_rules.id
+Ref: outbound_clicks.retailer_item_id > retailer_items.id
