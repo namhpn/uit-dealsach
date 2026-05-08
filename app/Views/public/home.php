@@ -2,278 +2,189 @@
 
 <?= $this->section('styles') ?>
 <style>
-    /* ── Hero Section ── */
     .ds-hero {
-        background: linear-gradient(135deg, #1a73e8 0%, #6610f2 100%);
-        color: #fff;
-        padding: 4rem 0 3.5rem;
-        position: relative;
-        overflow: hidden;
+        padding: 4.5rem 0 3rem;
+        background:
+            linear-gradient(90deg, rgba(246,244,238,.98) 0%, rgba(246,244,238,.78) 54%, rgba(246,244,238,.92) 100%),
+            url("https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1800&q=80") center/cover;
+        border-bottom: 1px solid var(--ds-line);
     }
-    .ds-hero::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        background: var(--ds-bg, #f8f9fa);
-        clip-path: ellipse(55% 100% at 50% 100%);
-    }
+
     .ds-hero h1 {
-        font-weight: 700;
-        font-size: 2.4rem;
-        margin-bottom: .75rem;
+        max-width: 780px;
+        font-size: clamp(2.2rem, 5vw, 4.8rem);
+        line-height: 1.02;
+        font-weight: 800;
     }
-    .ds-hero .lead {
-        font-weight: 400;
-        opacity: .9;
-        font-size: 1.15rem;
+
+    .ds-hero-copy {
+        max-width: 660px;
+        color: var(--ds-muted);
+        font-size: 1.05rem;
     }
+
     .ds-hero-search {
-        max-width: 560px;
-        margin: 1.75rem auto 0;
+        max-width: 680px;
+        background: var(--ds-paper);
+        border: 1px solid var(--ds-line);
+        border-radius: 8px;
+        padding: .55rem;
+        box-shadow: 0 18px 45px rgba(22, 32, 29, .08);
     }
+
     .ds-hero-search .form-control {
-        border-radius: 2rem 0 0 2rem;
-        border: none;
-        padding: .75rem 1.25rem;
-        font-size: 1rem;
+        border: 0;
+        background: transparent;
+        min-height: 48px;
     }
-    .ds-hero-search .btn {
-        border-radius: 0 2rem 2rem 0;
-        background: #ff6d00;
-        border: none;
-        color: #fff;
-        padding: .75rem 1.5rem;
-        font-weight: 600;
-    }
-    .ds-hero-search .btn:hover { background: #e65100; }
 
-    /* ── Stats Row ── */
-    .ds-stat-card {
-        background: #fff;
-        border-radius: .75rem;
-        padding: 1.25rem;
-        text-align: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,.06);
-        transition: transform .2s, box-shadow .2s;
+    .ds-stat {
+        min-height: 128px;
+        padding: 1.2rem;
     }
-    .ds-stat-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 20px rgba(0,0,0,.1);
-    }
-    .ds-stat-card .stat-icon {
-        font-size: 2rem;
-        background: linear-gradient(135deg, #1a73e8, #6610f2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .ds-stat-card .stat-value { font-weight: 700; font-size: 1.5rem; }
-    .ds-stat-card .stat-label { color: #6c757d; font-size: .82rem; }
 
-    /* ── Section headings ── */
+    .ds-stat .value {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: var(--ds-green-dark);
+    }
+
     .ds-section-title {
-        font-weight: 700;
-        font-size: 1.4rem;
-        position: relative;
-        display: inline-block;
-        padding-bottom: .4rem;
-    }
-    .ds-section-title::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 48px;
-        height: 3px;
-        border-radius: 2px;
-        background: linear-gradient(90deg, #1a73e8, #6610f2);
+        font-weight: 800;
+        color: var(--ds-ink);
     }
 
-    /* ── Book card ── */
     .ds-book-card {
-        border: none;
-        border-radius: .75rem;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,.06);
-        transition: transform .2s, box-shadow .2s;
         height: 100%;
-    }
-    .ds-book-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 8px 24px rgba(0,0,0,.12);
-    }
-    .ds-book-card .card-img-top {
-        height: 220px;
-        object-fit: cover;
-        background: #eee;
-    }
-    .ds-book-card .card-body { padding: 1rem 1.1rem; }
-    .ds-book-card .card-title {
-        font-weight: 600;
-        font-size: .95rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
         overflow: hidden;
-    }
-    .ds-book-card .price-highlight {
-        color: #e53935;
-        font-weight: 700;
-        font-size: 1.1rem;
-    }
-    .ds-book-card .price-original {
-        text-decoration: line-through;
-        color: #999;
-        font-size: .85rem;
-    }
-    .ds-book-card .badge-retailer {
-        font-size: .7rem;
-        font-weight: 500;
+        transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    /* ── Retailer logos strip ── */
-    .ds-retailer-strip img {
-        height: 36px;
-        filter: grayscale(100%);
-        opacity: .5;
-        transition: filter .3s, opacity .3s;
+    .ds-book-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 34px rgba(22, 32, 29, .1);
     }
-    .ds-retailer-strip img:hover { filter: grayscale(0); opacity: 1; }
+
+    .ds-cover {
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        width: 100%;
+    }
 </style>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<section class="ds-hero">
+    <div class="container">
+        <p class="text-uppercase fw-bold mb-2" style="color: var(--ds-green); font-size:.82rem;">So sánh giá sách Việt Nam</p>
+        <h1>DealSach tìm giá tốt nhất trước khi bạn đặt mua.</h1>
+        <p class="ds-hero-copy mt-3 mb-4">
+            Tìm sách theo tên, tác giả hoặc ISBN; xem giá từ Fahasa, Tiki, Shopee và Nhà sách Phương Nam trên cùng một trang.
+        </p>
 
-<!-- ════════════ Hero ════════════ -->
-<section class="ds-hero text-center" id="heroSection">
-    <div class="container position-relative" style="z-index:2;">
-        <h1>So sánh giá sách<br class="d-md-none"> trực tuyến tại Việt Nam</h1>
-        <p class="lead">Tìm sách giá tốt nhất từ Fahasa, Tiki, Shopee và Nhà sách Phương Nam — tất cả trên một trang.</p>
-
-        <form class="ds-hero-search d-flex mx-auto" action="<?= site_url('sach') ?>" method="get" id="heroSearchForm">
-            <input class="form-control" type="search" name="q"
-                   placeholder="Nhập tên sách, tác giả hoặc ISBN…" aria-label="Tìm kiếm sách">
-            <button class="btn" type="submit">
-                <i class="bi bi-search me-1"></i>Tìm
-            </button>
+        <form class="ds-hero-search d-flex align-items-center" action="<?= site_url('sach') ?>" method="get">
+            <i class="bi bi-search fs-5 ms-2" style="color: var(--ds-muted);"></i>
+            <input class="form-control" type="search" name="q" placeholder="Ví dụ: Đắc Nhân Tâm, Nguyễn Nhật Ánh, 978..." aria-label="Tìm kiếm sách">
+            <button class="btn ds-search-btn px-4" type="submit">Tìm</button>
         </form>
     </div>
 </section>
 
-<!-- ════════════ Stats Row ════════════ -->
-<section class="container mt-5" id="statsSection">
-    <div class="row g-3 row-cols-2 row-cols-md-4">
+<section class="container mt-4">
+    <div class="row g-3 row-cols-2 row-cols-lg-4">
         <div class="col">
-            <div class="ds-stat-card">
-                <div class="stat-icon"><i class="bi bi-book"></i></div>
-                <div class="stat-value mt-1">0</div>
-                <div class="stat-label">Đầu sách</div>
+            <div class="ds-card ds-stat">
+                <i class="bi bi-book fs-4" style="color: var(--ds-gold);"></i>
+                <div class="value mt-2"><?= number_format((int) ($stats['books'] ?? 0), 0, ',', '.') ?></div>
+                <div class="text-muted">Đầu sách</div>
             </div>
         </div>
         <div class="col">
-            <div class="ds-stat-card">
-                <div class="stat-icon"><i class="bi bi-shop"></i></div>
-                <div class="stat-value mt-1">4</div>
-                <div class="stat-label">Nhà bán lẻ</div>
+            <div class="ds-card ds-stat">
+                <i class="bi bi-shop fs-4" style="color: var(--ds-gold);"></i>
+                <div class="value mt-2"><?= number_format((int) ($stats['retailers'] ?? 0), 0, ',', '.') ?></div>
+                <div class="text-muted">Nhà bán</div>
             </div>
         </div>
         <div class="col">
-            <div class="ds-stat-card">
-                <div class="stat-icon"><i class="bi bi-graph-down-arrow"></i></div>
-                <div class="stat-value mt-1">0</div>
-                <div class="stat-label">Giảm giá hôm nay</div>
+            <div class="ds-card ds-stat">
+                <i class="bi bi-tags fs-4" style="color: var(--ds-gold);"></i>
+                <div class="value mt-2"><?= number_format((int) ($stats['offers'] ?? 0), 0, ',', '.') ?></div>
+                <div class="text-muted">Lượt giá</div>
             </div>
         </div>
         <div class="col">
-            <div class="ds-stat-card">
-                <div class="stat-icon"><i class="bi bi-bell"></i></div>
-                <div class="stat-value mt-1">0</div>
-                <div class="stat-label">Theo dõi giá</div>
+            <div class="ds-card ds-stat">
+                <i class="bi bi-bell fs-4" style="color: var(--ds-gold);"></i>
+                <div class="value mt-2"><?= number_format((int) ($stats['trackingRules'] ?? 0), 0, ',', '.') ?></div>
+                <div class="text-muted">Theo dõi giá</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ════════════ Featured Books ════════════ -->
-<section class="container mt-5" id="featuredSection">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="ds-section-title">Sách nổi bật</h2>
-        <a href="<?= site_url('sach') ?>" class="text-decoration-none fw-semibold">
-            Xem tất cả <i class="bi bi-arrow-right"></i>
+<section class="container mt-5">
+    <div class="d-flex align-items-end justify-content-between gap-3 mb-3">
+        <div>
+            <p class="text-uppercase fw-bold mb-1" style="color: var(--ds-green); font-size:.78rem;">Gợi ý nhanh</p>
+            <h2 class="ds-section-title h3 mb-0">Sách có giá tốt</h2>
+        </div>
+        <a class="btn btn-outline-success" href="<?= site_url('sach') ?>">
+            Xem danh mục <i class="bi bi-arrow-right ms-1"></i>
         </a>
     </div>
 
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-        <!-- Placeholder cards – replace with dynamic data -->
-        <?php for ($i = 1; $i <= 4; $i++): ?>
-        <div class="col">
-            <div class="card ds-book-card">
-                <div class="card-img-top d-flex align-items-center justify-content-center bg-light text-muted">
-                    <i class="bi bi-image fs-1"></i>
+    <?php if ($featuredBooks === []): ?>
+        <div class="ds-card p-5 text-center">
+            <i class="bi bi-database-x fs-1 text-muted"></i>
+            <p class="text-muted mt-3 mb-0">Chưa có dữ liệu sách. Hãy chạy migration và seed demo trước.</p>
+        </div>
+    <?php else: ?>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+            <?php foreach ($featuredBooks as $book): ?>
+                <div class="col">
+                    <a class="text-decoration-none text-reset" href="<?= site_url('sach/' . $book['slug']) ?>">
+                        <article class="ds-card ds-book-card">
+                            <?php if (! empty($book['cover_image_url'])): ?>
+                                <img class="ds-cover" src="<?= esc($book['cover_image_url']) ?>" alt="<?= esc($book['title']) ?>">
+                            <?php else: ?>
+                                <div class="ds-cover ds-empty-cover d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-book fs-1"></i>
+                                </div>
+                            <?php endif; ?>
+                            <div class="p-3">
+                                <h3 class="h6 fw-bold mb-1"><?= esc($book['title']) ?></h3>
+                                <p class="text-muted small mb-2"><?= esc($book['authors']) ?></p>
+                                <?php if ($book['lowest_price'] !== null): ?>
+                                    <div class="ds-price"><?= format_vnd($book['lowest_price']) ?></div>
+                                <?php else: ?>
+                                    <div class="text-muted fw-semibold">Chưa có giá</div>
+                                <?php endif; ?>
+                                <div class="small text-muted mt-1"><?= (int) $book['available_offer_count'] ?> nơi còn hàng</div>
+                            </div>
+                        </article>
+                    </a>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Tên sách mẫu <?= $i ?></h5>
-                    <p class="mb-1 text-muted" style="font-size:.82rem;">Tác giả mẫu</p>
-                    <div class="d-flex align-items-baseline gap-2 mb-2">
-                        <span class="price-highlight">—</span>
-                    </div>
-                    <div class="d-flex gap-1 flex-wrap">
-                        <span class="badge bg-primary bg-opacity-10 text-primary badge-retailer">Fahasa</span>
-                        <span class="badge bg-success bg-opacity-10 text-success badge-retailer">Tiki</span>
-                    </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</section>
+
+<section class="container mt-5 mb-5">
+    <div class="ds-card p-4">
+        <div class="row g-3 align-items-center">
+            <div class="col-lg-5">
+                <h2 class="h4 fw-bold mb-1">Nguồn dữ liệu so sánh</h2>
+                <p class="text-muted mb-0">DealSach gom giá theo mô hình import-first, không crawl trực tiếp khi người dùng mở trang.</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="d-flex gap-2 flex-wrap justify-content-lg-end">
+                    <?php foreach ($retailers as $retailer): ?>
+                        <span class="badge text-bg-light border px-3 py-2"><?= esc($retailer['name']) ?></span>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
-        <?php endfor; ?>
     </div>
 </section>
-
-<!-- ════════════ Latest Books ════════════ -->
-<section class="container mt-5 mb-5" id="latestSection">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="ds-section-title">Sách mới cập nhật</h2>
-        <a href="<?= site_url('sach') ?>" class="text-decoration-none fw-semibold">
-            Xem tất cả <i class="bi bi-arrow-right"></i>
-        </a>
-    </div>
-
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-        <?php for ($i = 5; $i <= 8; $i++): ?>
-        <div class="col">
-            <div class="card ds-book-card">
-                <div class="card-img-top d-flex align-items-center justify-content-center bg-light text-muted">
-                    <i class="bi bi-image fs-1"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Tên sách mẫu <?= $i ?></h5>
-                    <p class="mb-1 text-muted" style="font-size:.82rem;">Tác giả mẫu</p>
-                    <div class="d-flex align-items-baseline gap-2 mb-2">
-                        <span class="price-highlight">—</span>
-                    </div>
-                    <div class="d-flex gap-1 flex-wrap">
-                        <span class="badge bg-warning bg-opacity-10 text-warning badge-retailer">Shopee</span>
-                        <span class="badge bg-info bg-opacity-10 text-info badge-retailer">Phương Nam</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endfor; ?>
-    </div>
-</section>
-
-<!-- ════════════ Retailer Strip ════════════ -->
-<section class="container mb-5" id="retailerSection">
-    <div class="text-center">
-        <p class="text-muted fw-semibold mb-3" style="font-size:.85rem;">NGUỒN DỮ LIỆU TỪ</p>
-        <div class="ds-retailer-strip d-flex justify-content-center align-items-center gap-4 flex-wrap">
-            <span class="fw-bold text-muted">Fahasa</span>
-            <span class="fw-bold text-muted">Tiki</span>
-            <span class="fw-bold text-muted">Shopee</span>
-            <span class="fw-bold text-muted">Phương Nam</span>
-        </div>
-    </div>
-</section>
-
 <?= $this->endSection() ?>
