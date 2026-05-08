@@ -114,7 +114,7 @@ $routes->group($adminPath, [
             'as' => 'admin.books.index',
         ]);
 
-        $routes->get('books/new', 'BookCrudController::new', [
+        $routes->get('books/new', 'BookCrudController::createForm', [
             'as' => 'admin.books.new',
         ]);
 
@@ -148,6 +148,10 @@ $routes->group($adminPath, [
 
         $routes->get('exports/activity.csv', 'ExportController::activityCsv', [
             'as' => 'admin.exports.activity',
+        ]);
+
+        $routes->get('ajax/books/search', 'AjaxController::bookSearch', [
+            'as' => 'admin.ajax.books.search',
         ]);
     });
 });
