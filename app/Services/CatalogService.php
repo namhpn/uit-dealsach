@@ -91,7 +91,7 @@ class CatalogService
         }
 
         $book = $this->normalizeBookRow($book);
-        $offers = $this->offersForBook((int) $book['id']);
+        $offers = (new ComparisonService($this->db))->offersForBook((int) $book['id']);
         $lowest = null;
 
         foreach ($offers as $offer) {
@@ -191,33 +191,6 @@ class CatalogService
         }
 
         return $builder;
-    }
-
-    /**
-     * @return list<array<string, mixed>>
-     */
-    private function offersForBook(int $bookId): array
-    {
-        return $this->db->table('retailer_items')
-            ->select([
-                'retailer_items.id',
-                'retailer_items.url',
-                'retailer_items.current_listed_price',
-                'retailer_items.current_discounted_price',
-                'retailer_items.current_effective_price',
-                'retailer_items.in_stock',
-                'retailer_items.last_crawled_at',
-                'retailers.name AS retailer_name',
-                'retailers.slug AS retailer_slug',
-                'retailers.website_url AS retailer_website_url',
-            ])
-            ->join('retailers', 'retailers.id = retailer_items.retailer_id')
-            ->where('retailer_items.book_id', $bookId)
-            ->where('retailer_items.is_active', 1)
-            ->orderBy('retailer_items.in_stock', 'DESC')
-            ->orderBy('retailer_items.current_effective_price', 'ASC')
-            ->get()
-            ->getResultArray();
     }
 
     private function latestCrawlForBook(int $bookId): ?string
