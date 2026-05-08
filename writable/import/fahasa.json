@@ -1,0 +1,23 @@
+[
+  {"book_id":1,"title":"Đắc Nhân Tâm","author":"Dale Carnegie","isbn":"9786045876412","original_id":"FHS-001","url":"https://fahasa.com/fhs-001","listed_price":128000,"discounted_price":99000,"in_stock":true},
+  {"book_id":2,"title":"Nhà Giả Kim","author":"Paulo Coelho","isbn":"9786047787303","original_id":"FHS-002","url":"https://fahasa.com/fhs-002","listed_price":109000,"discounted_price":85000,"in_stock":true},
+  {"book_id":3,"title":"Mắt Biếc","author":"Nguyễn Nhật Ánh","isbn":"9786041143112","original_id":"FHS-003","url":"https://fahasa.com/fhs-003","listed_price":118000,"discounted_price":93000,"in_stock":true},
+  {"book_id":4,"title":"Nghĩ Giàu Làm Giàu","author":"Napoleon Hill","isbn":"9786047793052","original_id":"FHS-004","url":"https://fahasa.com/fhs-004","listed_price":139000,"discounted_price":111000,"in_stock":true},
+  {"book_id":5,"title":"Dạy Con Làm Giàu","author":"Robert T. Kiyosaki","isbn":"9786047769392","original_id":"FHS-005","url":"https://fahasa.com/fhs-005","listed_price":155000,"discounted_price":125000,"in_stock":true},
+  {"book_id":6,"title":"Cho Tôi Xin Một Vé Đi Tuổi Thơ","author":"Nguyễn Nhật Ánh","isbn":"9786041171986","original_id":"FHS-006","url":"https://fahasa.com/fhs-006","listed_price":105000,"discounted_price":83000,"in_stock":true},
+  {"book_id":7,"title":"Cô Gái Đến Từ Hôm Qua","author":"Nguyễn Nhật Ánh","isbn":"9786041172266","original_id":"FHS-007","url":"https://fahasa.com/fhs-007","listed_price":97000,"discounted_price":76000,"in_stock":true},
+  {"book_id":8,"title":"Tôi Thấy Hoa Vàng Trên Cỏ Xanh","author":"Nguyễn Nhật Ánh","isbn":"9786041172259","original_id":"FHS-008","url":"https://fahasa.com/fhs-008","listed_price":125000,"discounted_price":99000,"in_stock":false},
+  {"book_id":9,"title":"Cây Chuối Non Đi Giày Kiểu Tây","author":"Nguyễn Nhật Ánh","isbn":"9786041172242","original_id":"FHS-009","url":"https://fahasa.com/fhs-009","listed_price":90000,"discounted_price":72000,"in_stock":true},
+  {"book_id":10,"title":"Ngồi Khóc Trên Cây","author":"Nguyễn Nhật Ánh","isbn":"9786041172235","original_id":"FHS-010","url":"https://fahasa.com/fhs-010","listed_price":112000,"discounted_price":88000,"in_stock":true},
+  {"book_id":11,"title":"Sự Im Lặng Của Bầy Cừu","author":"Dale Carnegie","isbn":"9786047784029","original_id":"FHS-011","url":"https://fahasa.com/fhs-011","listed_price":169000,"discounted_price":139000,"in_stock":true},
+  {"book_id":12,"title":"Tội Ác Và Hình Phạt","author":"Dale Carnegie","isbn":"9786047784012","original_id":"FHS-012","url":"https://fahasa.com/fhs-012","listed_price":188000,"discounted_price":151000,"in_stock":true},
+  {"book_id":13,"title":"Suối Nguồn","author":"Dale Carnegie","isbn":"9786047784036","original_id":"FHS-013","url":"https://fahasa.com/fhs-013","listed_price":245000,"discounted_price":210000,"in_stock":true},
+  {"book_id":14,"title":"Giết Con Chim Nhại","author":"Dale Carnegie","isbn":"9786047784043","original_id":"FHS-014","url":"https://fahasa.com/fhs-014","listed_price":145000,"discounted_price":119000,"in_stock":true},
+  {"book_id":15,"title":"Lược Sử Loài Người","author":"Yuval Noah Harari","isbn":"9786047784050","original_id":"FHS-015","url":"https://fahasa.com/fhs-015","listed_price":209000,"discounted_price":172000,"in_stock":true},
+  {"book_id":16,"title":"Tuổi Trẻ Đáng Giá Bao Nhiêu","author":"Tony Buổi Sáng","isbn":"9786047784067","original_id":"FHS-016","url":"https://fahasa.com/fhs-016","listed_price":96000,"discounted_price":78000,"in_stock":true},
+  {"book_id":17,"title":"Cà Phê Cùng Tony","author":"Tony Buổi Sáng","isbn":"9786047784074","original_id":"FHS-017","url":"https://fahasa.com/fhs-017","listed_price":89000,"discounted_price":69000,"in_stock":true},
+  {"book_id":18,"title":"Trên Đường Băng","author":"Tony Buổi Sáng","isbn":"9786047784081","original_id":"FHS-018","url":"https://fahasa.com/fhs-018","listed_price":98000,"discounted_price":79000,"in_stock":true},
+  {"book_id":19,"title":"Hành Trình Về Phương Đông","author":"Nguyên Phong","isbn":"9786047784098","original_id":"FHS-019","url":"https://fahasa.com/fhs-019","listed_price":138000,"discounted_price":112000,"in_stock":true},
+  {"book_id":20,"title":"Muôn Kiếp Nhân Sinh","author":"Nguyên Phong","isbn":"9786047784104","original_id":"FHS-020","url":"https://fahasa.com/fhs-020","listed_price":198000,"discounted_price":166000,"in_stock":true},
+  {"title":"Dòng lỗi kiểm thử","original_id":"FHS-BAD","listed_price":100000,"discounted_price":90000,"in_stock":true}
+]

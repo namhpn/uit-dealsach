@@ -1,0 +1,22 @@
+[
+  {"book_id":1,"title":"Đắc Nhân Tâm","author":"Dale Carnegie","isbn":"9786045876412","original_id":"TK-001","url":"https://tiki.vn/tk-001","listed_price":126000,"discounted_price":97000,"in_stock":true},
+  {"book_id":2,"title":"Nhà Giả Kim","author":"Paulo Coelho","isbn":"9786047787303","original_id":"TK-002","url":"https://tiki.vn/tk-002","listed_price":110000,"discounted_price":82000,"in_stock":true},
+  {"book_id":3,"title":"Mắt Biếc","author":"Nguyễn Nhật Ánh","isbn":"9786041143112","original_id":"TK-003","url":"https://tiki.vn/tk-003","listed_price":119000,"discounted_price":89000,"in_stock":true},
+  {"book_id":4,"title":"Nghĩ Giàu Làm Giàu","author":"Napoleon Hill","isbn":"9786047793052","original_id":"TK-004","url":"https://tiki.vn/tk-004","listed_price":140000,"discounted_price":108000,"in_stock":true},
+  {"book_id":5,"title":"Dạy Con Làm Giàu","author":"Robert T. Kiyosaki","isbn":"9786047769392","original_id":"TK-005","url":"https://tiki.vn/tk-005","listed_price":152000,"discounted_price":121000,"in_stock":true},
+  {"book_id":6,"title":"Cho Tôi Xin Một Vé Đi Tuổi Thơ","author":"Nguyễn Nhật Ánh","isbn":"9786041171986","original_id":"TK-006","url":"https://tiki.vn/tk-006","listed_price":103000,"discounted_price":80000,"in_stock":true},
+  {"book_id":7,"title":"Cô Gái Đến Từ Hôm Qua","author":"Nguyễn Nhật Ánh","isbn":"9786041172266","original_id":"TK-007","url":"https://tiki.vn/tk-007","listed_price":96000,"discounted_price":74000,"in_stock":true},
+  {"book_id":8,"title":"Tôi Thấy Hoa Vàng Trên Cỏ Xanh","author":"Nguyễn Nhật Ánh","isbn":"9786041172259","original_id":"TK-008","url":"https://tiki.vn/tk-008","listed_price":126000,"discounted_price":96000,"in_stock":true},
+  {"book_id":9,"title":"Cây Chuối Non Đi Giày Kiểu Tây","author":"Nguyễn Nhật Ánh","isbn":"9786041172242","original_id":"TK-009","url":"https://tiki.vn/tk-009","listed_price":91000,"discounted_price":71000,"in_stock":true},
+  {"book_id":10,"title":"Ngồi Khóc Trên Cây","author":"Nguyễn Nhật Ánh","isbn":"9786041172235","original_id":"TK-010","url":"https://tiki.vn/tk-010","listed_price":111000,"discounted_price":86000,"in_stock":true},
+  {"book_id":11,"title":"Sự Im Lặng Của Bầy Cừu","author":"Dale Carnegie","isbn":"9786047784029","original_id":"TK-011","url":"https://tiki.vn/tk-011","listed_price":170000,"discounted_price":135000,"in_stock":true},
+  {"book_id":12,"title":"Tội Ác Và Hình Phạt","author":"Dale Carnegie","isbn":"9786047784012","original_id":"TK-012","url":"https://tiki.vn/tk-012","listed_price":190000,"discounted_price":149000,"in_stock":true},
+  {"book_id":13,"title":"Suối Nguồn","author":"Dale Carnegie","isbn":"9786047784036","original_id":"TK-013","url":"https://tiki.vn/tk-013","listed_price":249000,"discounted_price":205000,"in_stock":false},
+  {"book_id":14,"title":"Giết Con Chim Nhại","author":"Dale Carnegie","isbn":"9786047784043","original_id":"TK-014","url":"https://tiki.vn/tk-014","listed_price":144000,"discounted_price":115000,"in_stock":true},
+  {"book_id":15,"title":"Lược Sử Loài Người","author":"Yuval Noah Harari","isbn":"9786047784050","original_id":"TK-015","url":"https://tiki.vn/tk-015","listed_price":210000,"discounted_price":168000,"in_stock":true},
+  {"book_id":16,"title":"Tuổi Trẻ Đáng Giá Bao Nhiêu","author":"Tony Buổi Sáng","isbn":"9786047784067","original_id":"TK-016","url":"https://tiki.vn/tk-016","listed_price":97000,"discounted_price":76000,"in_stock":true},
+  {"book_id":17,"title":"Cà Phê Cùng Tony","author":"Tony Buổi Sáng","isbn":"9786047784074","original_id":"TK-017","url":"https://tiki.vn/tk-017","listed_price":88000,"discounted_price":67000,"in_stock":true},
+  {"book_id":18,"title":"Trên Đường Băng","author":"Tony Buổi Sáng","isbn":"9786047784081","original_id":"TK-018","url":"https://tiki.vn/tk-018","listed_price":99000,"discounted_price":77000,"in_stock":true},
+  {"book_id":19,"title":"Hành Trình Về Phương Đông","author":"Nguyên Phong","isbn":"9786047784098","original_id":"TK-019","url":"https://tiki.vn/tk-019","listed_price":139000,"discounted_price":109000,"in_stock":true},
+  {"book_id":20,"title":"Muôn Kiếp Nhân Sinh","author":"Nguyên Phong","isbn":"9786047784104","original_id":"TK-020","url":"https://tiki.vn/tk-020","listed_price":199000,"discounted_price":162000,"in_stock":true}
+]

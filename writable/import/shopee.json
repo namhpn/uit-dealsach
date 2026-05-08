@@ -1,0 +1,22 @@
+[
+  {"book_id":1,"title":"Đắc Nhân Tâm","author":"Dale Carnegie","isbn":"9786045876412","original_id":"SHP-001","url":"https://shopee.vn/shp-001","listed_price":125000,"discounted_price":95000,"in_stock":true},
+  {"book_id":2,"title":"Nhà Giả Kim","author":"Paulo Coelho","isbn":"9786047787303","original_id":"SHP-002","url":"https://shopee.vn/shp-002","listed_price":108000,"discounted_price":79000,"in_stock":true},
+  {"book_id":3,"title":"Mắt Biếc","author":"Nguyễn Nhật Ánh","isbn":"9786041143112","original_id":"SHP-003","url":"https://shopee.vn/shp-003","listed_price":116000,"discounted_price":87000,"in_stock":true},
+  {"book_id":4,"title":"Nghĩ Giàu Làm Giàu","author":"Napoleon Hill","isbn":"9786047793052","original_id":"SHP-004","url":"https://shopee.vn/shp-004","listed_price":137000,"discounted_price":105000,"in_stock":true},
+  {"book_id":5,"title":"Dạy Con Làm Giàu","author":"Robert T. Kiyosaki","isbn":"9786047769392","original_id":"SHP-005","url":"https://shopee.vn/shp-005","listed_price":150000,"discounted_price":118000,"in_stock":false},
+  {"book_id":6,"title":"Cho Tôi Xin Một Vé Đi Tuổi Thơ","author":"Nguyễn Nhật Ánh","isbn":"9786041171986","original_id":"SHP-006","url":"https://shopee.vn/shp-006","listed_price":101000,"discounted_price":78000,"in_stock":true},
+  {"book_id":7,"title":"Cô Gái Đến Từ Hôm Qua","author":"Nguyễn Nhật Ánh","isbn":"9786041172266","original_id":"SHP-007","url":"https://shopee.vn/shp-007","listed_price":95000,"discounted_price":73000,"in_stock":true},
+  {"book_id":8,"title":"Tôi Thấy Hoa Vàng Trên Cỏ Xanh","author":"Nguyễn Nhật Ánh","isbn":"9786041172259","original_id":"SHP-008","url":"https://shopee.vn/shp-008","listed_price":124000,"discounted_price":94000,"in_stock":true},
+  {"book_id":9,"title":"Cây Chuối Non Đi Giày Kiểu Tây","author":"Nguyễn Nhật Ánh","isbn":"9786041172242","original_id":"SHP-009","url":"https://shopee.vn/shp-009","listed_price":89000,"discounted_price":69000,"in_stock":true},
+  {"book_id":10,"title":"Ngồi Khóc Trên Cây","author":"Nguyễn Nhật Ánh","isbn":"9786041172235","original_id":"SHP-010","url":"https://shopee.vn/shp-010","listed_price":110000,"discounted_price":84000,"in_stock":true},
+  {"book_id":11,"title":"Sự Im Lặng Của Bầy Cừu","author":"Dale Carnegie","isbn":"9786047784029","original_id":"SHP-011","url":"https://shopee.vn/shp-011","listed_price":168000,"discounted_price":132000,"in_stock":true},
+  {"book_id":12,"title":"Tội Ác Và Hình Phạt","author":"Dale Carnegie","isbn":"9786047784012","original_id":"SHP-012","url":"https://shopee.vn/shp-012","listed_price":187000,"discounted_price":146000,"in_stock":true},
+  {"book_id":13,"title":"Suối Nguồn","author":"Dale Carnegie","isbn":"9786047784036","original_id":"SHP-013","url":"https://shopee.vn/shp-013","listed_price":242000,"discounted_price":201000,"in_stock":true},
+  {"book_id":14,"title":"Giết Con Chim Nhại","author":"Dale Carnegie","isbn":"9786047784043","original_id":"SHP-014","url":"https://shopee.vn/shp-014","listed_price":143000,"discounted_price":113000,"in_stock":true},
+  {"book_id":15,"title":"Lược Sử Loài Người","author":"Yuval Noah Harari","isbn":"9786047784050","original_id":"SHP-015","url":"https://shopee.vn/shp-015","listed_price":208000,"discounted_price":165000,"in_stock":true},
+  {"book_id":16,"title":"Tuổi Trẻ Đáng Giá Bao Nhiêu","author":"Tony Buổi Sáng","isbn":"9786047784067","original_id":"SHP-016","url":"https://shopee.vn/shp-016","listed_price":95000,"discounted_price":74000,"in_stock":true},
+  {"book_id":17,"title":"Cà Phê Cùng Tony","author":"Tony Buổi Sáng","isbn":"9786047784074","original_id":"SHP-017","url":"https://shopee.vn/shp-017","listed_price":87000,"discounted_price":65000,"in_stock":true},
+  {"book_id":18,"title":"Trên Đường Băng","author":"Tony Buổi Sáng","isbn":"9786047784081","original_id":"SHP-018","url":"https://shopee.vn/shp-018","listed_price":97000,"discounted_price":75000,"in_stock":true},
+  {"book_id":19,"title":"Hành Trình Về Phương Đông","author":"Nguyên Phong","isbn":"9786047784098","original_id":"SHP-019","url":"https://shopee.vn/shp-019","listed_price":137000,"discounted_price":106000,"in_stock":true},
+  {"book_id":20,"title":"Muôn Kiếp Nhân Sinh","author":"Nguyên Phong","isbn":"9786047784104","original_id":"SHP-020","url":"https://shopee.vn/shp-020","listed_price":196000,"discounted_price":158000,"in_stock":true}
+]
