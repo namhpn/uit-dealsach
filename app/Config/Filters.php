@@ -39,7 +39,7 @@ class Filters extends BaseFilters
         'adminGuest' => \App\Filters\AdminGuestFilter::class,
         'verifiedEmail' => \App\Filters\VerifiedEmailFilter::class,
         'signedTrackingToken' => \App\Filters\SignedTrackingTokenFilter::class,
-        'throttle' => \CodeIgniter\Filters\Throttle::class,
+        'throttle' => \App\Filters\ThrottleFilter::class,
     ];
 
     /**

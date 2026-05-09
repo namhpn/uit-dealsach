@@ -32,6 +32,16 @@
         border: 1px solid #cbded2;
         border-radius: 8px;
     }
+
+    .ds-otp-panel[hidden] {
+        display: none !important;
+    }
+
+    .ds-otp-code {
+        letter-spacing: .22rem;
+        font-weight: 700;
+        text-align: center;
+    }
 </style>
 <?= $this->endSection() ?>
 
@@ -177,12 +187,19 @@
 
     <section class="row mt-5">
         <div class="col-lg-8 mx-auto">
-            <div class="ds-tracking-box p-4">
+            <div class="ds-tracking-box p-4"
+                 id="trackingBox"
+                 data-book-id="<?= (int) $book['id'] ?>"
+                 data-request-url="<?= site_url('theo-doi/gui-otp') ?>"
+                 data-verify-url="<?= site_url('theo-doi/xac-thuc-otp') ?>"
+                 data-create-url="<?= site_url('theo-doi/tao') ?>">
                 <h2 class="h5 fw-bold mb-2"><i class="bi bi-bell me-2"></i>Theo dõi giảm giá</h2>
-                <p class="text-muted mb-3">Nhập email và mức giá mong muốn. Luồng OTP ở P7 sẽ nối vào form này.</p>
-                <form class="row g-2" method="post" action="<?= site_url('tracking/otp/request') ?>">
+                <p class="text-muted mb-3">Nhập email và mức giá mong muốn, DealSach sẽ gửi mã OTP để xác thực trước khi tạo theo dõi.</p>
+
+                <div class="alert mb-3 d-none" id="trackingMessage" role="alert"></div>
+
+                <form class="row g-2" id="otpRequestForm" method="post">
                     <?= csrf_field() ?>
-                    <input type="hidden" name="book_id" value="<?= (int) $book['id'] ?>">
                     <div class="col-md">
                         <label class="form-label small fw-semibold" for="trackingEmail">Email</label>
                         <input class="form-control" id="trackingEmail" type="email" name="email" placeholder="ban@example.com" required>
@@ -190,16 +207,159 @@
                     <div class="col-md">
                         <label class="form-label small fw-semibold" for="targetPrice">Giá mục tiêu</label>
                         <input class="form-control" id="targetPrice" type="number" min="1000" step="1000" name="target_price"
-                               value="<?= esc($book['lowest_price'] ?? '') ?>" placeholder="Ví dụ: 89000">
+                               value="<?= esc($book['lowest_price'] ?? '') ?>" placeholder="Ví dụ: 89000" required>
                     </div>
                     <div class="col-md-auto d-flex align-items-end">
-                        <button class="btn ds-search-btn w-100" type="submit">
-                            <i class="bi bi-send me-1"></i>Gửi OTP
+                        <button class="btn ds-search-btn w-100" type="submit" data-default-label="Gửi mã OTP">
+                            <i class="bi bi-send me-1"></i><span>Gửi mã OTP</span>
                         </button>
                     </div>
+                </form>
+
+                <form class="row g-2 mt-3 ds-otp-panel" id="otpVerifyForm" method="post" hidden>
+                    <div class="col-md">
+                        <label class="form-label small fw-semibold" for="otpCode">Mã OTP</label>
+                        <input class="form-control ds-otp-code" id="otpCode" type="text" name="otp"
+                               inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code"
+                               placeholder="000000" required>
+                        <div class="form-text" id="devOtpHint"></div>
+                    </div>
+                    <div class="col-md-auto d-flex align-items-end">
+                        <button class="btn btn-outline-success w-100" type="submit" data-default-label="Xác thực">
+                            <i class="bi bi-shield-check me-1"></i><span>Xác thực</span>
+                        </button>
+                    </div>
+                </form>
+
+                <form class="mt-3 ds-otp-panel" id="trackingCreateForm" method="post" hidden>
+                    <button class="btn ds-search-btn" type="submit" data-default-label="Tạo theo dõi giá">
+                        <i class="bi bi-bell-fill me-1"></i><span>Tạo theo dõi giá</span>
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+(() => {
+    const box = document.getElementById('trackingBox');
+    if (!box) {
+        return;
+    }
+
+    const bookId = box.dataset.bookId;
+    const urls = {
+        request: box.dataset.requestUrl,
+        verify: box.dataset.verifyUrl,
+        create: box.dataset.createUrl,
+    };
+    const requestForm = document.getElementById('otpRequestForm');
+    const verifyForm = document.getElementById('otpVerifyForm');
+    const createForm = document.getElementById('trackingCreateForm');
+    const messageBox = document.getElementById('trackingMessage');
+    const emailInput = document.getElementById('trackingEmail');
+    const priceInput = document.getElementById('targetPrice');
+    const otpInput = document.getElementById('otpCode');
+    const devOtpHint = document.getElementById('devOtpHint');
+    const csrfInput = requestForm.querySelector('input[type="hidden"]');
+
+    const setMessage = (type, text) => {
+        messageBox.className = `alert alert-${type} mb-3`;
+        messageBox.textContent = text;
+    };
+
+    const setLoading = (button, isLoading) => {
+        const label = button.querySelector('span');
+        button.disabled = isLoading;
+        label.textContent = isLoading ? 'Đang xử lý...' : button.dataset.defaultLabel;
+    };
+
+    const postJson = async (url, data) => {
+        const body = new FormData();
+        body.append(csrfInput.name, csrfInput.value);
+        body.append('book_id', bookId);
+        Object.entries(data).forEach(([key, value]) => body.append(key, value));
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            body,
+        });
+        const json = await response.json();
+        if (json.csrf) {
+            csrfInput.value = json.csrf;
+        }
+        return json;
+    };
+
+    requestForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = requestForm.querySelector('button[type="submit"]');
+        setLoading(button, true);
+        try {
+            const json = await postJson(urls.request, {
+                email: emailInput.value,
+                target_price: priceInput.value,
+            });
+            setMessage(json.success ? 'success' : 'danger', json.message);
+            if (json.success) {
+                emailInput.readOnly = true;
+                verifyForm.hidden = false;
+                otpInput.focus();
+                devOtpHint.textContent = json.dev_otp ? `Mã OTP dev: ${json.dev_otp}` : '';
+            }
+        } catch (error) {
+            setMessage('danger', 'Không thể gửi OTP. Vui lòng thử lại sau.');
+        } finally {
+            setLoading(button, false);
+        }
+    });
+
+    verifyForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = verifyForm.querySelector('button[type="submit"]');
+        setLoading(button, true);
+        try {
+            const json = await postJson(urls.verify, {
+                email: emailInput.value,
+                otp: otpInput.value,
+            });
+            setMessage(json.success ? 'success' : 'danger', json.message);
+            if (json.success) {
+                otpInput.readOnly = true;
+                createForm.hidden = false;
+            }
+        } catch (error) {
+            setMessage('danger', 'Không thể xác thực OTP. Vui lòng thử lại.');
+        } finally {
+            setLoading(button, false);
+        }
+    });
+
+    createForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = createForm.querySelector('button[type="submit"]');
+        setLoading(button, true);
+        try {
+            const json = await postJson(urls.create, {
+                email: emailInput.value,
+                target_price: priceInput.value,
+            });
+            setMessage(json.success ? 'success' : 'danger', json.message);
+            if (json.success) {
+                requestForm.hidden = true;
+                verifyForm.hidden = true;
+                createForm.hidden = true;
+            }
+        } catch (error) {
+            setMessage('danger', 'Không thể tạo theo dõi giá. Vui lòng thử lại.');
+        } finally {
+            setLoading(button, false);
+        }
+    });
+})();
+</script>
 <?= $this->endSection() ?>

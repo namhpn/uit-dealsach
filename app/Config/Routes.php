@@ -44,25 +44,36 @@ $routes->group('', ['namespace' => 'App\Controllers\Public'], static function ($
     ]);
 
     // ── OTP Tracking ──
-    $routes->post('tracking/otp/request', 'TrackingController::requestOtp', [
+    $routes->post('theo-doi/gui-otp', 'TrackingController::requestOtp', [
         'as'     => 'tracking.otp.request',
         'filter' => ['csrf', 'throttle:otp-request'],
     ]);
 
-    $routes->post('tracking/otp/verify', 'TrackingController::verifyOtp', [
+    $routes->post('theo-doi/xac-thuc-otp', 'TrackingController::verifyOtp', [
         'as'     => 'tracking.otp.verify',
         'filter' => ['csrf', 'throttle:otp-verify'],
     ]);
 
     // ── Tracking Rules ──
-    $routes->post('tracking/rules', 'TrackingController::createRule', [
+    $routes->post('theo-doi/tao', 'TrackingController::createRule', [
         'as'     => 'tracking.rules.create',
         'filter' => ['csrf', 'verifiedEmail', 'throttle:tracking-create'],
     ]);
 
-    $routes->post('tracking/rules/disable', 'TrackingController::disableRule', [
+    $routes->post('theo-doi/tat', 'TrackingController::disableRule', [
         'as'     => 'tracking.rules.disable',
         'filter' => ['csrf', 'signedTrackingToken'],
+    ]);
+
+    // Compatibility aliases for early P4 placeholders.
+    $routes->post('tracking/otp/request', 'TrackingController::requestOtp', [
+        'filter' => ['csrf', 'throttle:otp-request'],
+    ]);
+    $routes->post('tracking/otp/verify', 'TrackingController::verifyOtp', [
+        'filter' => ['csrf', 'throttle:otp-verify'],
+    ]);
+    $routes->post('tracking/rules', 'TrackingController::createRule', [
+        'filter' => ['csrf', 'verifiedEmail', 'throttle:tracking-create'],
     ]);
 
     // ── Outbound Redirect ──
