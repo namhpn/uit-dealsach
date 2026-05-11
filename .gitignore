@@ -50,6 +50,7 @@ $RECYCLE.BIN/
 #-------------------------
 vendor/
 composer.phar
+node_modules/
 
 #-------------------------
 # CodeIgniter Writable Runtime Files

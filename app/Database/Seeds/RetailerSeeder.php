@@ -17,6 +17,7 @@ class RetailerSeeder extends Seeder
         ];
 
         foreach ($data as &$retailer) {
+            $retailer['logo_url'] = null;
             $retailer['is_active'] = true;
             $retailer['created_at'] = $now;
             $retailer['updated_at'] = $now;

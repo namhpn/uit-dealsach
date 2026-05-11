@@ -54,7 +54,17 @@ class TrackingController extends BaseController
 
     public function disableRule()
     {
-        return $this->json(false, 'Tắt theo dõi bằng token sẽ được hoàn thiện ở P8.');
+        if (! $this->validate(['rule_id' => 'required|integer', 'email' => 'required|valid_email', 'token' => 'required|min_length[32]'])) {
+            return $this->json(false, 'Thông tin tắt theo dõi không hợp lệ.');
+        }
+
+        $result = (new TrackingService())->disableRule(
+            (int) $this->request->getPost('rule_id'),
+            (string) $this->request->getPost('email'),
+            (string) $this->request->getPost('token')
+        );
+
+        return $this->json($result['success'], $result['message'], $result);
     }
 
     /**
