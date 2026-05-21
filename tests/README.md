@@ -54,6 +54,36 @@ If you are using Windows, use the following command.
 > vendor\bin\phpunit
 ```
 
+### DealSach frontend smoke checks
+
+The frontend checks in `tests/feature/FrontendSmokeTest.php` exercise the rendered public and admin pages through the running Docker/nginx app. Start the stack, seed demo data, then run the filtered suite from the app container:
+
+```console
+> docker compose up -d
+> docker exec dealsach-app php spark migrate:refresh
+> docker exec dealsach-app php spark db:seed DemoSeeder
+> docker exec dealsach-app php spark dealsach:crawl all
+> docker exec dealsach-app vendor/bin/phpunit --colors=never --filter FrontendSmokeTest
+```
+
+When running PHPUnit from the host instead of inside the container, point the checks at the published nginx port:
+
+```console
+> set FRONTEND_TEST_BASE_URL=http://localhost:8080
+> vendor\bin\phpunit --colors=never --filter FrontendSmokeTest
+```
+
+### DealSach visual QA
+
+The browser visual QA runner captures desktop, tablet, and mobile screenshots for public pages, admin pages, mobile menus, and the OTP flow. It fails on blocked assets, console errors, broken images, mojibake, horizontal overflow, clipped controls, sidebar overlap, and other visible layout regressions.
+
+```console
+> npm install
+> npm run qa:visual
+```
+
+By default it checks `http://localhost:8080` and writes screenshots plus `report.md` to `build/visual-qa`. Use `VISUAL_QA_BASE_URL` to point at another running app URL.
+
 You can limit tests to those within a single test directory by specifying the
 directory name after phpunit.
 
